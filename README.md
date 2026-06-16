@@ -42,7 +42,7 @@ Multimodal satellite imagery can provide more comprehensive information, which s
 
 <figure>
 <div align="center">
-<img src=Fig/MERGE-Net.bmp width="80%">
+<img src=Figs/MERGE-Net.bmp width="80%">
 </div>
 
 <div align='center'>
