@@ -196,7 +196,7 @@ python main.py --path-config config/config_Berlin.yaml      --device cuda:0
 <p align="center"><img src="Figs/cls_Berlin.png" width="900"/></p>
 
 # 📝 Citation
-If you find UniTree helpful, please give a ⭐ and cite it as follows:
+If you find MERGE-Net helpful, please give a ⭐ and cite it as follows:
 
 ```bibtex
 @article{mergenet,
