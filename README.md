@@ -63,7 +63,7 @@ HSI-SAR Berlin: https://github.com/danfenghong/ISPRS_S2FL <br>
 </div>
 
 
-# 🔧 Requirements
+## 🔧 Requirements
 
 | Package | Version |
 |---|---|
@@ -75,31 +75,42 @@ HSI-SAR Berlin: https://github.com/danfenghong/ISPRS_S2FL <br>
 | pandas / openpyxl | 2.2.3 / 3.1.5 |
 | PyYAML | 6.0.2 |
 | einops | 0.8.0 |
+| spconv | 2.3.6 (`spconv-cu120`) |
 | thop | 0.1.1 |
+| matplotlib | 3.9.2 |
 
 ```bash
 conda create -n mergenet python=3.9 -y
 conda activate mergenet
-pip install torch==2.5.1 numpy==1.26.4 scipy==1.12.0 scikit-learn==1.5.1 pandas==2.2.3 openpyxl==3.1.5 pyyaml==6.0.2 einops==0.8.0 thop
+pip install torch==2.5.1 numpy==1.26.4 scipy==1.12.0 scikit-learn==1.5.1 pandas==2.2.3 openpyxl==3.1.5 pyyaml==6.0.2 einops==0.8.0 spconv-cu120==2.3.6 thop matplotlib==3.9.2
 ```
 
-> For a different CUDA version, install PyTorch following [pytorch.org](https://pytorch.org) first, then the remaining packages.
+> For a different CUDA version, install PyTorch following [pytorch.org](https://pytorch.org) first, then the matching `spconv-cuXXX` build (see [spconv](https://github.com/traveller59/spconv)), then the remaining packages.
 
 Please replace all file and directory paths in `config/config_<Dataset>.yaml` with your local paths before running the code.
 
-# 🚀 Usage
+## 🚀 Usage
 
 ```bash
-python main.py --path-config config/config_Augsburg.yaml    --device cuda:0 --runs 10
-python main.py --path-config config/config_Houston2013.yaml --device cuda:0 --runs 10
-python main.py --path-config config/config_Berlin.yaml      --device cuda:0 --runs 10
+python main.py --path-config config/config_Augsburg.yaml    --device cuda:0
+python main.py --path-config config/config_Houston2013.yaml --device cuda:0
+python main.py --path-config config/config_Berlin.yaml      --device cuda:0
 ```
 
+Optional arguments: `--runs` (number of repeated runs, default 5; use `--runs 10` to reproduce the tables below), `--seed` (seed of the first run, default 666, +1 per run).
+
+Model weights (`model.pth`) and results (per-run and mean/std `.xlsx`, `.json`) are written to `path_weight` / `path_result` set in the config.
+
 ```
-├── main.py              # training / testing / statistics
-├── data.py              # loading, PCA, patch extraction, sample split
-├── models/mergenet.py   # DOSM + C3I + Transformer + GEETF
-└── config/              # Augsburg / Houston2013 / Berlin
+├── main.py                  # training / testing / statistics (OA, AA, Kappa, per-class accuracy, Params, GMACs)
+├── config/                  # config_Augsburg / config_Houston2013 / config_Berlin .yaml
+├── loadData/
+│   ├── data_reader.py       # .mat loading, PCA
+│   ├── data_pipe.py         # data preparation and data loaders
+│   └── split_data.py        # training-sample selection and patch dataset
+└── models/
+    ├── MERGE-Net.py         # MERGE-Net (class FDGC): DOSM + C3I + Transformer + GEETF (ETF_Classifier)
+    └── transformer.py       # Transformer utilities imported by FDGC_sp3D.py
 ```
 
 # 📈 Results
@@ -193,13 +204,9 @@ python main.py --path-config config/config_Berlin.yaml      --device cuda:0 --ru
 If you find UniTree helpful, please give a ⭐ and cite it as follows:
 
 ```bibtex
-@article{yang2026mergenet,
+@article{mergenet,
   title   = {Exploring Directional Sparsity and Cross-Modal Contrast-Consensus: {MERGE-Net} for {HSI-SAR/LiDAR} Joint Classification},
   author  = {Yang, Jiaqi and Du, Bo and Liu, Rong and Huang, Jiayang and Chang, Shizhen and Zhang, Liangpei},
   journal = {IEEE Transactions on Geoscience and Remote Sensing},
   year    = {2026}
 }
-```
-  keywords={Earth Observing System;Sentinel-1;Sentinel-2;Apertures;Feeds;Antennas;Filtering;Filters;Modulation;Communications technology;Multimodal classification;HSI-SAR/LiDAR imagery;heterogeneously salient graph representation;transformer},
-  doi={10.1109/TGRS.2026.3686762}}
-```
