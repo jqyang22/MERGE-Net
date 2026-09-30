@@ -63,7 +63,7 @@ HSI-SAR Berlin: https://github.com/danfenghong/ISPRS_S2FL <br>
 </div>
 
 
-## 🔧 Requirements
+# 🔧 Requirements
 
 | Package | Version |
 |---|---|
@@ -77,19 +77,18 @@ HSI-SAR Berlin: https://github.com/danfenghong/ISPRS_S2FL <br>
 | einops | 0.8.0 |
 | spconv | 2.3.6 (`spconv-cu120`) |
 | thop | 0.1.1 |
-| matplotlib | 3.9.2 |
 
 ```bash
 conda create -n mergenet python=3.9 -y
 conda activate mergenet
-pip install torch==2.5.1 numpy==1.26.4 scipy==1.12.0 scikit-learn==1.5.1 pandas==2.2.3 openpyxl==3.1.5 pyyaml==6.0.2 einops==0.8.0 spconv-cu120==2.3.6 thop matplotlib==3.9.2
+pip install torch==2.5.1 numpy==1.26.4 scipy==1.12.0 scikit-learn==1.5.1 pandas==2.2.3 openpyxl==3.1.5 pyyaml==6.0.2 einops==0.8.0 spconv-cu120==2.3.6 thop
 ```
 
 > For a different CUDA version, install PyTorch following [pytorch.org](https://pytorch.org) first, then the matching `spconv-cuXXX` build (see [spconv](https://github.com/traveller59/spconv)), then the remaining packages.
 
 Please replace all file and directory paths in `config/config_<Dataset>.yaml` with your local paths before running the code.
 
-## 🚀 Usage
+# 🚀 Usage
 
 ```bash
 python main.py --path-config config/config_Augsburg.yaml    --device cuda:0
@@ -97,20 +96,16 @@ python main.py --path-config config/config_Houston2013.yaml --device cuda:0
 python main.py --path-config config/config_Berlin.yaml      --device cuda:0
 ```
 
-Optional arguments: `--runs` (number of repeated runs, default 5; use `--runs 10` to reproduce the tables below), `--seed` (seed of the first run, default 666, +1 per run).
-
-Model weights (`model.pth`) and results (per-run and mean/std `.xlsx`, `.json`) are written to `path_weight` / `path_result` set in the config.
-
 ```
-├── main.py                  
-├── config/                  
+├── main.py                 
+├── config/                
 ├── loadData/
-│   ├── data_reader.py       
+│   ├── data_reader.py    
 │   ├── data_pipe.py        
 │   └── split_data.py        
 └── models/
-    ├── MERGE-Net.py         
-    └── transformer.py      
+    ├── MERGE_Net.py    
+    └── transformer.py   
 ```
 
 # 📈 Results
