@@ -1,0 +1,34 @@
+model:
+  model_name: "MERGE_Net"
+
+data_input:
+  dataset_name: Augsburg
+  classes: 7
+  patch_size: 15
+  path_data: /path/to/Augsburg/
+  path_data_LiDAR: /path/to/Augsburg/
+
+data_split:
+  split_type: number
+  train_num: 50
+  val_num: 0
+  train_ratio: 0.1
+  val_ratio: 0
+
+data_transforms:
+  num_components: 32
+  batch_size: 256
+  remove_zero_labels: True
+
+network_config:
+  max_epoch: 200
+  learning_rate: 0.001
+  weight_decay: 0.001
+  lb_smooth: 0.01
+  num_nodes: 1
+
+result_output:
+  data_info_start: 1
+  log_interval: 2
+  path_weight: ./results/Augsburg/
+  path_result: ./results/Augsburg/
