@@ -178,16 +178,16 @@ python main.py --path-config config/config_Berlin.yaml      --device cuda:0 --ru
 
 </details>
 
-## Classification maps
+## Classification results
 
 **Augsburg (HSI-SAR)**
-<p align="center"><img src="assets/clsmap_Augsburg.png" width="900"/></p>
+<p align="center"><img src="Figs/cls_Augsburg.png" width="900"/></p>
 
 **Houston2013 (HSI-LiDAR)**
-<p align="center"><img src="assets/clsmap_Houston2013.png" width="900"/></p>
+<p align="center"><img src="Figs/cls_Houston2013.png" width="900"/></p>
 
 **Berlin (HSI-SAR)**
-<p align="center"><img src="assets/clsmap_Berlin.png" width="900"/></p>
+<p align="center"><img src="Figs/cls_Berlin.png" width="900"/></p>
 
 # 📝 Citation
 If you find UniTree helpful, please give a ⭐ and cite it as follows:
