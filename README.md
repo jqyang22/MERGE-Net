@@ -102,15 +102,15 @@ Optional arguments: `--runs` (number of repeated runs, default 5; use `--runs 10
 Model weights (`model.pth`) and results (per-run and mean/std `.xlsx`, `.json`) are written to `path_weight` / `path_result` set in the config.
 
 ```
-├── main.py                  # training / testing / statistics (OA, AA, Kappa, per-class accuracy, Params, GMACs)
-├── config/                  # config_Augsburg / config_Houston2013 / config_Berlin .yaml
+├── main.py                  
+├── config/                  
 ├── loadData/
-│   ├── data_reader.py       # .mat loading, PCA
-│   ├── data_pipe.py         # data preparation and data loaders
-│   └── split_data.py        # training-sample selection and patch dataset
+│   ├── data_reader.py       
+│   ├── data_pipe.py        
+│   └── split_data.py        
 └── models/
-    ├── MERGE-Net.py         # MERGE-Net (class FDGC): DOSM + C3I + Transformer + GEETF (ETF_Classifier)
-    └── transformer.py       # Transformer utilities imported by FDGC_sp3D.py
+    ├── MERGE-Net.py         
+    └── transformer.py      
 ```
 
 # 📈 Results
