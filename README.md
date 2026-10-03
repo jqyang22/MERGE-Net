@@ -17,7 +17,7 @@
 <div align="center">
 
 <p align='center'>
-  <a href="https://ieeexplore-ieee-org.ezproxy.library.wisc.edu/document/11494135"><img alt="Pape" src="https://img.shields.io/badge/TGRS-Paper-6D4AFF?style=for-the-badge" /></a>
+  <a href="https://ieeexplore.ieee.org/document/11718792"><img alt="Pape" src="https://img.shields.io/badge/TGRS-Paper-6D4AFF?style=for-the-badge" /></a>
 </p>
 
 <p align="center">
